@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class FoodsController < ApplicationController
   before_action :authenticate_user!
   def index
@@ -21,7 +19,7 @@ class FoodsController < ApplicationController
       redirect_to foods_path, alert: 'Failed to destroy food.'
     end
   end
-  
+
   def create
     @food = current_user.foods.build(food_params)
 
