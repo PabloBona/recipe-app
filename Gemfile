@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'letter_opener'
 ruby '3.2.2'
+gem 'cancancan'
 gem 'devise'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bullet'
