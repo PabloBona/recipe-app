@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RecipeFoodsController < ApplicationController
   before_action :authenticate_user!
   def index; end
