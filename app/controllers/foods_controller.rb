@@ -6,8 +6,6 @@ class FoodsController < ApplicationController
     session[:sort_direction] = order_direction
     @foods = @user.foods.order("LOWER(name) #{order_direction}")
   end
-  
-  
 
   def show; end
 

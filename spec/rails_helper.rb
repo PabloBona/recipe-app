@@ -72,35 +72,32 @@ RSpec.configure do |config|
   end
 end
 class TestConfiguration
-  @@example_user = nil
+  @example_user = nil
 
   def self.example_user
-    @@example_user ||= create_example_user
+    @example_user ||= create_example_user
   end
 
   def self.create_example_user
-    # Crea el usuario de ejemplo y devuélvelo
     user = User.create!(
-      name: "Ejemplo Usuario",
-      email: "ejemplo@example.com",
-      password: "password123",
+      name: 'Ejemplo Usuario',
+      email: 'ejemplo@example.com',
+      password: 'password123',
       confirmed_at: Time.now
     )
-    # Crea las comidas "Banana" y "Apple" asociadas al usuario
+
     create_food(user, 'Banana')
     create_food(user, 'Apple')
     user
   end
 
-  private
-
   def self.create_food(user, name)
     Food.create!(
-      name: name,
-      measurement_unit: "unit",
+      name:,
+      measurement_unit: 'unit',
       price: 1,
       quantity: 1,
-      user: user
+      user:
     )
   end
 end

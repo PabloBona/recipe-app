@@ -12,13 +12,11 @@ RSpec.describe FoodsController, type: :controller do
       get :index
       expect(response).to be_successful
     end
-
-    
   end
 
   describe 'GET #show' do
     it 'returns a successful response' do
-      food = create(:food, user: user)
+      food = create(:food, user:)
       get :show, params: { id: food.id }
       expect(response).to be_successful
     end
@@ -33,20 +31,19 @@ RSpec.describe FoodsController, type: :controller do
 
   describe 'POST #create' do
     it 'creates a new food with valid params' do
-      expect {
+      expect do
         post :create, params: { food: attributes_for(:food) }
-      }.to change(Food, :count).by(1)
+      end.to change(Food, :count).by(1)
       expect(response).to redirect_to(foods_path)
     end
- 
   end
 
   describe 'DELETE #destroy' do
     it 'destroys the food' do
-      food = create(:food, user: user)
-      expect {
+      food = create(:food, user:)
+      expect do
         delete :destroy, params: { id: food.id }
-      }.to change(Food, :count).by(-1)
+      end.to change(Food, :count).by(-1)
       expect(response).to redirect_to(foods_path)
     end
   end
