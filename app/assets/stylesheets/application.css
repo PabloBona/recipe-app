@@ -20,8 +20,7 @@
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 8px solid #000;  
+  border-bottom: 8px #000;
   display: inline-block;
-  margin-left: 5px
+  margin-left: 5px;
 }
-
