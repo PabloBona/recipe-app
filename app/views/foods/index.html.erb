@@ -8,6 +8,9 @@
   <% if alert %>
     <p class="alert"><%= alert %></p>
   <% end %>
+  <div class="my-3 text-end">
+   <%= link_to "Add New Food", new_food_path, class: "btn btn-primary mt-3" %>
+  </div>
   <table class="border table">
     <thead>
       <tr>
@@ -33,5 +36,4 @@
     </tbody>
   </table>
 
-  <%= link_to "Add New Food", new_food_path, class: "btn btn-primary mt-3 w-100" %>
 </div>
