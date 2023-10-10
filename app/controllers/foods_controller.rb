@@ -2,8 +2,12 @@ class FoodsController < ApplicationController
   before_action :authenticate_user!
   def index
     @user = current_user
-    @foods = @user.foods
+    order_direction = params[:sort] == 'name' && session[:sort_direction] == 'asc' ? 'desc' : 'asc'
+    session[:sort_direction] = order_direction
+    @foods = @user.foods.order("LOWER(name) #{order_direction}")
   end
+  
+  
 
   def show; end
 
