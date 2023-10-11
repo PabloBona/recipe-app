@@ -14,3 +14,36 @@
 .navbar-nav .nav-link.active {
   color: #1875cc !important;
 }
+
+.public-btn,
+.public-btn-false {
+  width: 60px;
+  height: 25px;
+  border-radius: 25px;
+}
+
+.public-btn {
+  background: linear-gradient(270deg, rgba(4, 116, 24, 1) 0%, rgba(72, 159, 84, 1) 20%, rgba(214, 250, 211, 1) 100%);
+}
+
+.public-btn-false {
+  background: linear-gradient(90deg, rgba(5, 5, 5, 1) -69%, rgba(255, 255, 255, 1) 100%);
+}
+
+.buttons {
+  width: 90px;
+  height: 42px;
+}
+
+.auto-width,
+.button_to,
+a {
+  text-decoration: none;
+  width: fit-content;
+}
+
+#recipe_food_food_id {
+  border-radius: 5px;
+  width: 19rem;
+  height: 3.4rem;
+}
