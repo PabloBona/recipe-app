@@ -6,19 +6,52 @@ class RecipesController < ApplicationController
     @recipes = @user.recipes
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+    @foods = []
+    @recipe_foods.each { |recipe_food| @foods << Food.where(id: recipe_food.food_id) }
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    return unless @recipe.update(update_params)
+
+    redirect_to recipe_path(@recipe)
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     authorize! :destroy, @recipe
-    @foods_list = RecipeFood.where(recipe_id: @recipe)
-
-    RecipeFood.where(recipe_id: @recipe).delete_all
-
-    @foods_list.each do |food|
-      Food.where(id: food.food_id).delete_all
-    end
 
     return unless @recipe.destroy
 
+    RecipeFood.where(recipe_id: @recipe).delete_all
+
     redirect_to recipes_path
+  end
+
+  def new
+    @user = current_user
+    @new_recipe = @user.recipes.new
+  end
+
+  def create
+    recipe = current_user.recipes.new(recipes_params)
+    if recipe.save
+      redirect_to recipe_path(recipe.id)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def recipes_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description)
+  end
+
+  def update_params
+    params.require(:recipe).permit(:public)
   end
 end
