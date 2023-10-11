@@ -1,5 +1,6 @@
 <%= render 'devise/shared/navbar' %>
 <section class="p-3 text-center d-flex flex-column row-gap-3">
   <h1><%= @user.name %>'s Recipes</h1>
+  <span class="text-end"><%= link_to 'Create new recipe', new_recipe_path, class: 'btn btn-primary' %></span>
   <%= render partial: 'recipe_card', collection: @recipes, as: :recipe %>
 </section>

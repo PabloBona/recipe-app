@@ -1,2 +1,38 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<%= render partial: 'devise/shared/navbar' %>
+
+<section class="text-center p-3">
+  <h3 class="p-3"><%= @recipe.name %></h3>
+  <div class="container text-start ps-4">
+    <div class="row ps-4">
+      <div class="col d-flex flex-column row-gap-3">
+        <span>Preparation time: <%= @recipe.preparation_time %> hours</span>
+        <span>Cooking time: <%= @recipe.cooking_time %></span>
+      </div>
+      <div class="col d-flex justify-content-end pe-5">
+        <span class="d-flex column-gap-2">Public <%= public?(@recipe) %></public>
+      </div>
+    </div>
+    <div class="row p-4">
+      <div class="col">
+        <%= @recipe.description %>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-around p-3">
+    <%= link_to 'Generate shopping list', general_shopping_lists_url, class: 'buttons btn btn-primary auto-width' %>
+    <%= link_to 'Add ingredient', new_recipe_food_path(@recipe), class: 'buttons btn btn-primary auto-width' %>
+  </div>
+  <div class="container border-top p-3">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+        <%= render partial: 'table_rows', locals: { food: @foods, recipe_foods: @recipe_foods} %>
+      </tbody>
+    </table>
+  </div>
+</section>
