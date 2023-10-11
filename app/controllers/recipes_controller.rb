@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
     @recipe_foods = @recipe.recipe_foods
     @foods = []
     @recipe_foods.each { |recipe_food| @foods << Food.where(id: recipe_food.food_id) }
+    @food_details = new_recipe_foods_object(@foods, @recipe_foods)
   end
 
   def update
@@ -53,5 +54,15 @@ class RecipesController < ApplicationController
 
   def update_params
     params.require(:recipe).permit(:public)
+  end
+
+  def new_recipe_foods_object(foods, recipe_foods)
+    new_foods = []
+    foods.each do |food|
+      recipe = recipe_foods.filter { |elem| elem.food_id == food[0].id }
+      item = {food: food[0], recipe: recipe[0]}
+      new_foods << item
+    end
+    new_foods
   end
 end

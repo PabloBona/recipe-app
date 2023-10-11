@@ -30,7 +30,7 @@
           <th>Value</th>
           <th>Actions</th>
         </tr>
-        <%= render partial: 'table_rows', locals: { food: @foods, recipe_foods: @recipe_foods} %>
+        <%= render partial: 'table_rows', collection: @food_details, as: :foods %>
       </tbody>
     </table>
   </div>

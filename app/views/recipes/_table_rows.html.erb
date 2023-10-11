@@ -1,9 +1,6 @@
-<% food.each_with_index do |food, idx| %>
-  <tr>
-    <td><%= food[0].name %></td>
-    <td><%= recipe_foods[idx].quantity %></td>
-    <td><%= food[0].price %></td>
-    <td class="d-flex"><%= recipe_actions(food[0], recipe_foods[idx]) %></td>
-  </tr>
-  <% end %>
+<tr>
+  <td><%= foods[:food].name %></td>
+  <td><%= foods[:recipe].quantity %></td>
+  <td><%= foods[:food].price %></td>
+  <td class="d-flex"><%= recipe_actions(foods[:food], foods[:recipe]) %></td>
 </tr>
