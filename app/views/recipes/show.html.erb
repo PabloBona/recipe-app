@@ -19,8 +19,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-around p-3">
-    <%= link_to 'Generate shopping list', general_shopping_lists_url, class: 'buttons btn btn-primary auto-width' %>
-    <%= link_to 'Add ingredient', new_recipe_food_path(@recipe), class: 'buttons btn btn-primary auto-width' %>
+    <%= details_buttons(@recipe) %>
   </div>
   <div class="container border-top p-3">
     <table class="table table-striped table-bordered">
