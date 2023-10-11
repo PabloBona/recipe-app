@@ -15,6 +15,16 @@
   color: #1875cc !important;
 }
 
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px #000;
+  display: inline-block;
+  margin-left: 5px;
+}
+
 .public-btn,
 .public-btn-false {
   width: 60px;

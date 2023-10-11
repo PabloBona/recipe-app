@@ -1,4 +1,42 @@
 <%= render 'devise/shared/navbar' %>
 
-<h1>Foods#index</h1>
-<p>Find me in app/views/foods/index.html.erb</p>
+<div class="container mt-5">
+  <h2 class="text-center"><%= @user.name %>'s Food</h2>
+  <h2 class="text-center">Food List</h2>
+  <% if notice %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+  <div class="my-3 text-end">
+    <%= link_to "Add New Food", new_food_path, class: "btn btn-primary mt-3" %>
+  </div>
+  <table class="border table">
+    <thead>
+      <tr>
+        <th class="food-name">
+          Name
+          <%= link_to '', foods_path(sort: 'name'), class: 'triangle-up' %>
+        </th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td>$ <%= food.price %></td>
+          <td><%= food.quantity %></td>
+          <td>
+            <%= button_to "Delete", food, method: :delete, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

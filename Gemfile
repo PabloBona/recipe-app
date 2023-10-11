@@ -11,10 +11,11 @@ gem 'devise'
 gem 'bullet'
 gem 'rails', '~> 7.0.8'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem 'faker'
 gem 'sprockets-rails'
-
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+gem 'shoulda-matchers'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -26,6 +27,7 @@ gem 'importmap-rails'
 gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem 'factory_bot_rails'
 gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -55,6 +57,7 @@ gem 'rspec'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 group :development do
@@ -73,3 +76,4 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+# Run against this stable release
