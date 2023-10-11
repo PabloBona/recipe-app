@@ -12,9 +12,14 @@
         <li class="nav-item <%= 'active' if current_page?(recipe_foods_path) %>">
           <%= link_to 'Recipe Foods', recipe_foods_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item <%= 'active' if current_page?(recipes_path) %>">
+        <li class="nav-item">
           <%= link_to 'Recipes', recipes_path, class: 'nav-link' %>
         </li>
+        <% if user_signed_in? %>
+          <li class="nav-item <%= 'active' if current_page?(recipes_path) %>">
+            <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
