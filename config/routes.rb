@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :recipe_foods
   resources :recipes
   resources :general_shopping_lists, only: [:index]
-
+  resources :public_recipes, only: [:index]
   # Define any additional custom routes if needed
   
 end

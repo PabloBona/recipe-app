@@ -3,15 +3,19 @@
 <div class="container mt-5">
   <h2 class="text-center"><%= @user.name %>'s Food</h2>
   <h2 class="text-center">Food List</h2>
+  
   <% if notice %>
     <p class="notice"><%= notice %></p>
   <% end %>
+  
   <% if alert %>
     <p class="alert"><%= alert %></p>
   <% end %>
+  
   <div class="my-3 text-end">
     <%= link_to "Add New Food", new_food_path, class: "btn btn-primary mt-3" %>
   </div>
+  
   <table class="border table">
     <thead>
       <tr>
@@ -25,9 +29,10 @@
         <th>Actions</th>
       </tr>
     </thead>
+    
     <tbody>
-      <% @foods.each do |food| %>
-        <tr>
+      <% @foods.each_with_index do |food, index| %>
+        <tr class="<%= index.even? ? 'table-warning' : '' %>">
           <td><%= food.name %></td>
           <td><%= food.measurement_unit %></td>
           <td>$ <%= food.price %></td>
