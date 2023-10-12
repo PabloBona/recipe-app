@@ -1,67 +1,40 @@
 class GeneralShoppingListsController < ApplicationController
   def index
     @recipes = current_user.recipes.includes(:foods, :recipe_foods).all
-    @remaining_stock = calculate_remaining_stock(@recipes)
-    @total_quantity = calculate_total_quantity(@recipes)
-    @total_price = calculate_total_price(@recipes, @remaining_stock)
+    required_foods = calculate_required_foods
+
+    @total_price = 0
+    @shopping_list = {}
+    required_foods.each do |food_id, quantity|
+      food = Food.find_by(id: food_id)
+      next unless food.quantity < quantity
+
+      final_quantity = quantity - food.quantity
+      @total_price += final_quantity * food.price
+
+      @shopping_list[food_id] = {
+        name: food.name,
+        quantity: final_quantity,
+        unit_price: food.price,
+        total_price: final_quantity * food.price
+      }
+    end
   end
 
   private
 
-  def calculate_stock_food_price(recipes)
-    stock_food_price = 0
-    recipes.each do |recipe|
+  def calculate_required_foods
+    required_foods = {}
+    @recipes.each do |recipe|
       recipe.recipe_foods.each do |recipe_food|
-        food = Food.find_by(id: recipe_food.food_id)
-        stock_food_price += food.price * food.quantity if food
-      end
-    end
-    stock_food_price
-  end
-
-  def calculate_total_quantity(recipes)
-    total_quantity = 0
-    recipes.each do |recipe|
-      recipe.recipe_foods.each do |recipe_food|
-        total_quantity += recipe_food.quantity
-      end
-    end
-    total_quantity
-  end
-
-  def calculate_total_price(recipes, remaining_stock)
-    total_price = 0
-    recipes.each do |recipe|
-      recipe.recipe_foods.each do |recipe_food|
-        food = Food.find_by(id: recipe_food.food_id)
-        next unless food
-
-        required_quantity = recipe_food.quantity
-        available_quantity = [required_quantity, remaining_stock[food.name]].min
-        total_price += food.price * available_quantity
-      end
-    end
-    total_price
-  end
-
-  def calculate_remaining_stock(recipes)
-    remaining_stock = {}
-
-    recipes.each do |recipe|
-      recipe.recipe_foods.each do |recipe_food|
-        food = Food.find_by(id: recipe_food.food_id)
-        next unless food
-
-        required_quantity = recipe_food.quantity
-        available_quantity = food.quantity
-        remaining_stock[food.name] = if available_quantity < required_quantity
-                                       required_quantity - available_quantity
-                                     else
-                                       available_quantity - required_quantity
-                                     end
+        if required_foods[recipe_food.food_id].nil?
+          required_foods[recipe_food.food_id] = recipe_food.quantity
+        else
+          required_foods[recipe_food.food_id] += recipe_food.quantity
+        end
       end
     end
 
-    remaining_stock
+    required_foods
   end
 end
