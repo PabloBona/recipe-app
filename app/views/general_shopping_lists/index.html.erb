@@ -1,40 +1,41 @@
 <%= render partial: 'devise/shared/navbar' %>
 <div class="container mt-5">
   <h2 class="text-center my-3">General Shopping List</h2>
-  
   <% total_quantity = 0 %>
   <% total_price = 0 %>
-  
   <% @recipes.each do |recipe| %>
     <% recipe.foods.each do |food| %>
       <% total_quantity += food.quantity %>
-      <% total_price += food.price * food.quantity %>
+      <% total_price += food.price * food.quantity%>
     <% end %>
   <% end %>
 
   <div class="d-flex justify-content-between mt-3">
     <div class="d-flex">
       <p class="fw-bold me-3">Total Amount of Food Needed:</p>
-      <p class="text-success"><%= total_quantity %> units</p>
+      <% @remaining_stock.each do |food_name, quantity| %>
+          <div class="text-danger px-3"><%= "#{food_name}: #{quantity.to_i} Units" %></div>
+      <% end %>
     </div>
     <div class="d-flex">
       <p class="fw-bold me-3">Total Value of Food Needed:</p>
-      <p class="text-success">$<%= total_price %></p>
+      <p class="text-success">$<%= @total_price.to_i %></p>
     </div>
+
   </div>
 
-  <div class="table-responsive">
+  <div class="table-responsive mt-3">
     <table class="table table-bordered">
       <thead class="table-primary">
         <tr>
           <th>Food</th>
-          <th>Quantity</th>
-          <th>Price</th>
+          <th>Quantity In Stock</th>
+          <th>Price Per Unit</th>
         </tr>
       </thead>
       <tbody>
-        <% @recipes.each_with_index do |recipe, index| %>
-          <% recipe.foods.each do |food| %>
+        <% @recipes.each do |recipe| %>
+          <% recipe.foods.each_with_index do |food, index| %>
             <tr class="<%= index.odd? ? 'table-warning' : '' %>">
               <td><%= food.name %></td>
               <td><%= food.quantity %></td>
