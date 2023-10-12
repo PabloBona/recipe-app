@@ -8,9 +8,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
-    @foods = []
-    @recipe_foods.each { |recipe_food| @foods << Food.where(id: recipe_food.food_id) }
   end
 
   def update

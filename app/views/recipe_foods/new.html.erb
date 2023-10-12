@@ -8,7 +8,7 @@
         <%= form.collection_select :food_id, @foods, :id, :name, prompt: 'Selecciona una categoría', class: 'select' %>
         <div class="d-flex flex-wrap column-gap-3">
           <%= form.label :quantity, "Necessary quantity:", class: 'col-form-label' %>
-          <%= form.number_field :quantity, class: 'form-control-lg' %>
+          <%= form.number_field :quantity, :required => true, class: 'form-control-lg' %>
         </div>
         <div class="d-flex column-gap-3">
           <%= form.submit "Add", class: 'btn btn-success btn-lg' %>
