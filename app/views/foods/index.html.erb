@@ -1,19 +1,19 @@
 <%= render 'devise/shared/navbar' %>
 
-<div class="container mt-5">
+<div class="container d-flex flex-column align-items-center mt-5">
   <h2 class="text-center"><%= @user.name %>'s Food</h2>
   <h2 class="text-center">Food List</h2>
   
   <% if notice %>
-    <p class="notice"><%= notice %></p>
+    <p class="notice alert alert-danger w-50"><%= notice %></p>
   <% end %>
   
   <% if alert %>
     <p class="alert"><%= alert %></p>
   <% end %>
   
-  <div class="my-3 text-end">
-    <%= link_to "Add New Food", new_food_path, class: "btn btn-primary mt-3" %>
+  <div class="container d-flex justify-content-end mb-3 pe-0">
+    <%= link_to "Add New Food", new_food_path, class: "btn btn-primary" %>
   </div>
   
   <table class="border table">
