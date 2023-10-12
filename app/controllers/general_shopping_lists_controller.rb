@@ -1,6 +1,6 @@
 class GeneralShoppingListsController < ApplicationController
   def index
-    @recipes = Recipe.includes(:foods, :recipe_foods).all
+    @recipes = current_user.recipes.includes(:foods, :recipe_foods).all
     @remaining_stock = calculate_remaining_stock(@recipes)
     @total_quantity = calculate_total_quantity(@recipes)
     @total_price = calculate_total_price(@recipes, @remaining_stock)
@@ -54,7 +54,11 @@ class GeneralShoppingListsController < ApplicationController
 
         required_quantity = recipe_food.quantity
         available_quantity = food.quantity
-        remaining_stock[food.name] = required_quantity - available_quantity if available_quantity < required_quantity
+        remaining_stock[food.name] = if available_quantity < required_quantity
+                                       required_quantity - available_quantity
+                                     else
+                                       available_quantity - required_quantity
+                                     end
       end
     end
 
