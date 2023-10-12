@@ -15,11 +15,9 @@
         <li class="nav-item">
           <%= link_to 'Recipes', recipes_path, class: 'nav-link' %>
         </li>
-        <% if user_signed_in? %>
-          <li class="nav-item <%= 'active' if current_page?(recipes_path) %>">
-            <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link' %>
-          </li>
-        <% end %>
+        <li class="nav-item <%= 'active' if current_page?(recipes_path) %>">
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-link nav-link' %>
+        </li>
       </ul>
     </div>
   </div>
