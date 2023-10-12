@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Recipe', type: :request do
   let(:user) { TestConfiguration.create_example_user }
-  let(:recipe) { create(:recipe, user_id: user.id, public: false) }
+  let(:recipe) { create(:recipe, preparation_time: 1, cooking_time: 1, description: 'Steps here...') }
 
   describe 'GET Recipe#index' do
     before do

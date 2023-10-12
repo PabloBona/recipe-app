@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'recipes/index', type: :view do
   include Devise::Test::ControllerHelpers
   let(:user) { TestConfiguration.create_example_user }
-  let(:recipe) { create(:recipe, user_id: user.id) }
+  let(:recipe) { create(:recipe, preparation_time: 1, cooking_time: 1, description: 'Steps here...') }
 
   before do
     assign(:user, user)
