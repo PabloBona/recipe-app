@@ -1,7 +1,11 @@
-<div class="d-flex column-gap-3 border border-black rounded-3 p-3">
-  <div class="d-flex flex-column fs-3">
-    <%= link_to recipe.name, recipe_path(recipe.id) %>
-    <%= delete_button(recipe) %>
+<div class="container">
+  <div class="row">
+      <div class="border border-black d-flex p-3 rounded-3 m-3">
+        <div class="align-items-center col-6 d-flex flex-column fs-3">
+          <%= link_to recipe.name, recipe_path(recipe.id) %>
+          <%= delete_button(recipe) %>
+        </div>
+        <div class="fs-5 align-items-center"><%= trim_text(recipe.description) %></div>
+      </div>      
   </div>
-  <div class="fs-5"><%= trim_text(recipe.description) %></div>
 </div>
