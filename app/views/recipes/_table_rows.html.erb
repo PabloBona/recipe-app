@@ -1,6 +1,6 @@
 <tr>
   <td><%= foods[:food].name %></td>
   <td><%= foods[:recipe].quantity %></td>
-  <td><%= foods[:food].price %></td>
+  <td><%= foods[:food].price * foods[:recipe].quantity %></td>
   <td class="d-flex"><%= recipe_actions(foods[:food], foods[:recipe]) %></td>
 </tr>
