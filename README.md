@@ -119,5 +119,5 @@ Feel free to check the issues [page](https://github.com/PabloBona/recipe-app) an
 If you find this project helpful, consider giving it a ⭐️ to show your support!
 
 ## 📜 License <a name="license"></a>
-This project is [MIT](https://github.com/PabloBona/Blog-app/recipe-app/dev/MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
 
