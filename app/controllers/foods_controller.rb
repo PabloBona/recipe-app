@@ -28,7 +28,7 @@ class FoodsController < ApplicationController
     if @food.save
       if exists?(@food.name)
         @food.destroy
-        redirect_to foods_path, notice: "Food wasn't created because it already exist" 
+        redirect_to foods_path, notice: "Food wasn't created because it already exist"
       else
         redirect_to foods_path, notice: 'Food was successfully created.'
       end

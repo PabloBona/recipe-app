@@ -6,8 +6,8 @@ RSpec.describe 'general_shopping_lists/index', type: :view do
   let(:food) { Food.create(name: 'Cherry', measurement_unit: 'kg', price: '12', quantity: 2, user_id: user.id) }
   let(:recipe) { create(:recipe, preparation_time: 1, cooking_time: 1, description: 'Steps here...') }
   let(:recipe_food) { RecipeFood.create(quantity: 5, recipe_id: recipe.id, food_id: food.id) }
-  let(:shopping) { {food.id => {name: food.name, quantity: 3, total_price: 36 }} }
-  
+  let(:shopping) { { food.id => { name: food.name, quantity: 3, total_price: 36 } } }
+
   before do
     sign_in user
     assign(:recipes, recipe)

@@ -5,7 +5,7 @@ RSpec.describe 'Shopping list', type: :request do
   let(:food) { create(:food, user:) }
   let(:recipe) { create(:recipe, preparation_time: 1, cooking_time: 1, description: 'Steps here...') }
   let(:recipe_food) { RecipeFood.create(quantity: 5, recipe_id: recipe.id, food_id: food.id) }
-  
+
   describe 'GET shopping#index' do
     before do
       sign_in user
@@ -25,8 +25,8 @@ RSpec.describe 'Shopping list', type: :request do
     end
 
     it 'Body should includ total amount of food and total value' do
-      expect(response.body).to include("Amount of Food Item To Buy:")
-      expect(response.body).to include("Total Value of Food Needed:")
+      expect(response.body).to include('Amount of Food Item To Buy:')
+      expect(response.body).to include('Total Value of Food Needed:')
     end
 
     it 'Body should include a table' do
@@ -35,5 +35,4 @@ RSpec.describe 'Shopping list', type: :request do
       expect(response.body).to include('Price')
     end
   end
-
 end
