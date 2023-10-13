@@ -29,14 +29,13 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @new_recipe = @user.recipes.new
+    @recipe = Recipe.new
   end
 
   def create
-    recipe = current_user.recipes.new(recipes_params)
-    if recipe.save
-      redirect_to recipe_path(recipe.id)
+    @recipe = current_user.recipes.new(recipes_params)
+    if @recipe.save
+      redirect_to recipe_path(@recipe.id)
     else
       render :new
     end

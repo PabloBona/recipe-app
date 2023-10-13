@@ -57,3 +57,20 @@ a {
   width: 19rem;
   height: 3.4rem;
 }
+
+.notice {
+  -webkit-animation: cssanimation 3s forwards !important;
+  animation: cssanimation 3s forwards !important;
+}
+
+@keyframes cssanimation {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes cssanimation {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

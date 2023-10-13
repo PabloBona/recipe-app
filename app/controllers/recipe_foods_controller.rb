@@ -1,17 +1,13 @@
 class RecipeFoodsController < ApplicationController
   before_action :authenticate_user!
-  def index; end
-
-  def show; end
 
   def new
-    @user = current_user
-    @food_list = @user.foods
+    @food_list = current_user.foods
     @recipe = Recipe.find(params[:id])
 
     @foods = filter_foods(@recipe, @food_list)
 
-    @new_recipe_food = @recipe.recipe_foods.new
+    @recipe_food = @recipe.recipe_foods.new
   end
 
   def create

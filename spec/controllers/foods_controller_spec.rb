@@ -14,14 +14,6 @@ RSpec.describe FoodsController, type: :controller do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns a successful response' do
-      food = create(:food, user:)
-      get :show, params: { id: food.id }
-      expect(response).to be_successful
-    end
-  end
-
   describe 'GET #new' do
     it 'returns a successful response' do
       get :new

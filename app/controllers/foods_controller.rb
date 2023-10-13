@@ -7,8 +7,6 @@ class FoodsController < ApplicationController
     @foods = @user.foods.order("LOWER(name) #{order_direction}")
   end
 
-  def show; end
-
   def new
     @food = Food.new
   end
@@ -26,7 +24,12 @@ class FoodsController < ApplicationController
     @food = current_user.foods.build(food_params)
 
     if @food.save
-      redirect_to foods_path, notice: 'Food was successfully created.'
+      if exists?(@food.name)
+        @food.destroy
+        redirect_to foods_path, notice: "Food wasn't created because it already exist"
+      else
+        redirect_to foods_path, notice: 'Food was successfully created.'
+      end
     else
       render :new
     end
@@ -36,5 +39,13 @@ class FoodsController < ApplicationController
 
   def food_params
     params.require(:food).permit(:name, :quantity, :measurement_unit, :price)
+  end
+
+  def exists?(food_name)
+    foods = current_user.foods
+    foods_names = foods.map { |food| food.name.downcase }
+    pp cuantity_of_foods = foods_names.filter { |name| name == food_name.downcase }
+
+    cuantity_of_foods.length > 1
   end
 end

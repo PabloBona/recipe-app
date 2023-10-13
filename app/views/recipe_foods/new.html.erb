@@ -2,19 +2,6 @@
 <section class="container p-3">
   <h1 class="p-3">Add foods to <%= @recipe.name %></h1>
   <div class="container p-3 fs-4">
-    <%= form_with(model:[@new_recipe_food], class: 'container' ) do |form| %>
-      <div class="form-div d-flex flex-wrap column-gap-3 row-gap-3">
-        <%= form.hidden_field :recipe_id, value: @recipe.id %>
-        <%= form.collection_select :food_id, @foods, :id, :name, prompt: 'Selecciona una categoría', class: 'select' %>
-        <div class="d-flex flex-wrap column-gap-3">
-          <%= form.label :quantity, "Necessary quantity:", class: 'col-form-label' %>
-          <%= form.number_field :quantity, :required => true, class: 'form-control-lg' %>
-        </div>
-        <div class="d-flex column-gap-3">
-          <%= form.submit "Add", class: 'btn btn-success btn-lg' %>
-          <%= link_to 'Cancel', recipe_path(@recipe.id), class: 'btn btn-danger btn-lg' %>
-        </div>
-      </div>
-    <% end %>
+    <%= create_form(@foods, @recipe_food, @recipe) %>
   </div>
 </section>
