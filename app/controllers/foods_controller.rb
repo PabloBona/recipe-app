@@ -7,8 +7,6 @@ class FoodsController < ApplicationController
     @foods = @user.foods.order("LOWER(name) #{order_direction}")
   end
 
-  def show; end
-
   def new
     @food = Food.new
   end
