@@ -1,0 +1,36 @@
+<%= render partial: 'devise/shared/navbar' %>
+<div class="container mt-5">
+  <h2 class="text-center my-3">General Shopping List</h2>
+
+  <div class="d-flex justify-content-between mt-3">
+    <div class="d-flex">
+      <p class="fw-bold me-3">Amount of Food Item To Buy: <%= @shopping_list.count %> </p>
+    </div>
+    <div class="d-flex">
+      <p class="fw-bold me-3">Total Value of Food Needed:</p>
+      <p class="text-success">$<%= @total_price.to_i %></p>
+    </div>
+
+  </div>
+
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered">
+      <thead class="table-primary">
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shopping_list.each do |item| %>
+          <tr>
+            <td><%= item[1][:name] %></td> <!-- Access 'name' from the hash using item[1][:name] -->
+            <td><%= item[1][:quantity].to_i  %></td>
+            <td>$<%= item[1][:total_price].to_i %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<%= render 'devise/shared/navbar' %>
+<section class="p-3 text-center d-flex flex-column row-gap-3">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h2><%= @user.name %>'s Recipes</h2>
+      <span class="d-flex justify-content-end m-3"><%= link_to 'Create new recipe', new_recipe_path, class: 'btn btn-primary' %></span>
+    </div>
+    <div>
+      <%= render partial: 'recipe_card', collection: @recipes, as: :recipe %>
+    </div>
+  </div>
+</div>
+</section>

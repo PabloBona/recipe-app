@@ -1,0 +1,27 @@
+<%= render 'devise/shared/navbar' %>
+
+<div class="container mt-5">
+  <section class="p-3 text-center d-flex flex-column row-gap-3">
+    <%if@recipes.empty?%>
+      <div class="row">
+        <div class="col">    
+          <div class="alert alert-primary text-center" role="alert">
+              There is no public recipe.
+          </div>
+        </div>
+      </div>    
+    <%else%>
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center">Public Recipes</h1>
+           <%= render partial: 'recipe_card', collection: @recipes, as: :recipe %> 
+        </div>
+      </div>
+    <%end%>
+  </section>
+</div>
+
+
+
+  
+  

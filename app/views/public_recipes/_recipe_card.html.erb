@@ -1,0 +1,15 @@
+<div class="bg-warning-subtle border border-black column-gap-3 d-flex justify-content-evenly my-3 p-3 rounded-3 align-items-center">
+  <div class="fs-4">
+    <%= link_to recipe.name, recipe_path(recipe.id) %>
+    <br> By: <%= recipe.user.name %>
+  </div>
+  <div class="">  
+      <% total_price = 0 %>
+      <% food_count = recipe.foods.count %>
+      <% recipe.recipe_foods.each do |recipe_food| %>
+      <% total_price += recipe_food.quantity * recipe_food.food.price %>
+      <% end %>
+     <span>Total Food Items: <%= food_count %></span> <br>
+    <span>Total Price: $<%= total_price %></span>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<%= render partial: 'devise/shared/navbar' %>
+
+<section class="container mt-5">
+  <h2 class="p-3 text-center">Create new recipe</h2>
+  <% if @recipe.errors.any? %>
+      <div class="container alert alert-danger w-50" role="alert" id="error_explanation">
+        <ul class="m-0">
+          <% @recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_with(model: @recipe, class: 'mt-3') do |form| %>
+      <div class="container d-flex flex-column align-items-center">
+        <div class="mb-3 w-50">
+          <%= form.label :name, "Recipe's name:", class: 'form-label' %>
+          <%= form.text_field :name, :required => true, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3 w-50">
+          <%= form.label :preparation_time, "Preparation time(hrs):", class: 'form-label' %>
+          <%= form.text_field :preparation_time, :required => true, class: 'form-control', type: 'number', step: '0.1' %>
+        </div>
+
+        <div class="mb-3 w-50">
+          <%= form.label :cooking_time, "Cooking time(hrs):", class: 'form-label' %>
+          <%= form.text_field :cooking_time, :required => true, class: 'form-control', type: 'number', step: '0.1' %>
+        </div>
+
+        <div class="mb-3 w-50">
+          <%= form.label :description, "Description:", class: 'form-label' %>
+          <%= form.text_area :description, :required => true, class: 'form-control' %>
+          <%= form.hidden_field :public, value: false %>
+        </div>
+        
+        <div class="d-flex column-gap-3 justify-content-center">
+          <%= form.submit "Create", class: 'btn btn-success fs-5' %>
+          <%= link_to 'Cancel', recipes_path, class: 'btn btn-danger fs-5' %>
+        </div>
+      </div>
+    <% end %>
+  </end>
+</section>

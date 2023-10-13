@@ -1,0 +1,19 @@
+<%= render partial: 'devise/shared/navbar' %>
+
+<section class="text-center p-3">
+  <h2 class="p-3 fs-1"><%= @food.name %> edit quantity</h2>
+  <div class="container p-3 fs-3">
+    <%= form_for @recipe_food, class: 'd-fex' do |f| %>
+      <div class="d-flex flex-column row-gap-3">
+        <div class="d-flex flex-wrap column-gap-3 row-gap-3 justify-content-center">
+          <%= f.label :quantity, 'Quantity:' %>
+          <%= f.text_field :quantity, type: 'number', step: '0.1'  %>
+        </div>
+        <div class="d-flex column-gap-3 justify-content-center">
+          <%= f.submit "Modify", class: 'btn btn-success btn-lg fs-4' %>
+          <%= link_to 'Cancel', recipe_path(@recipe_food.recipe_id), class: 'btn btn-danger btn-lg fs-4' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section

@@ -1,0 +1,7 @@
+<%= render partial: 'devise/shared/navbar' %>
+<section class="container p-3">
+  <h1 class="p-3">Add foods to <%= @recipe.name %></h1>
+  <div class="container p-3 fs-4">
+    <%= create_form(@foods, @recipe_food, @recipe) %>
+  </div>
+</section>

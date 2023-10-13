@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  font-family: 'Dela Gothic One', cursive;
+}
+
+.navbar-nav .nav-link.active {
+  color: #1875cc !important;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px #000;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.public-btn,
+.public-btn-false {
+  width: 60px;
+  height: 25px;
+  border-radius: 25px;
+}
+
+.public-btn {
+  background: linear-gradient(270deg, rgba(4, 116, 24, 1) 0%, rgba(72, 159, 84, 1) 20%, rgba(214, 250, 211, 1) 100%);
+}
+
+.public-btn-false {
+  background: linear-gradient(90deg, rgba(5, 5, 5, 1) -69%, rgba(255, 255, 255, 1) 100%);
+}
+
+.buttons {
+  width: 90px;
+  height: 42px;
+}
+
+.auto-width,
+.button_to,
+a {
+  text-decoration: none;
+  width: fit-content;
+}
+
+#recipe_food_food_id {
+  border-radius: 5px;
+  width: 19rem;
+  height: 3.4rem;
+}
+
+.notice {
+  -webkit-animation: cssanimation 3s forwards !important;
+  animation: cssanimation 3s forwards !important;
+}
+
+@keyframes cssanimation {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes cssanimation {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
