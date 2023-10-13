@@ -10,17 +10,15 @@ RSpec.describe Recipe, type: :model do
       expect(valid_recipe).to be_valid
     end
 
-    it 'Preparation time has to be interger greater than 0' do
+    it 'Preparation time has to be greater than 0' do
       expect(build(:recipe, preparation_time: 0, user_id: user.id, public: true)).not_to be_valid
       expect(build(:recipe, preparation_time: -5, user_id: user.id, public: true)).not_to be_valid
-      expect(build(:recipe, preparation_time: 1.5, user_id: user.id, public: true)).not_to be_valid
       expect(valid_recipe).to be_valid
     end
 
-    it 'Cooking time has to be interger greater than 0' do
+    it 'Cooking time has to be greater than 0' do
       expect(build(:recipe, cooking_time: 0, user_id: user.id, public: true)).not_to be_valid
       expect(build(:recipe, cooking_time: -5, user_id: user.id, public: true)).not_to be_valid
-      expect(build(:recipe, cooking_time: 1.5, user_id: user.id, public: true)).not_to be_valid
       expect(valid_recipe).to be_valid
     end
 

@@ -7,7 +7,7 @@ RSpec.describe 'recipes/new', type: :view do
   before do
     sign_in user
     assign(:user, user)
-    assign(:new_recipe, user.recipes.new)
+    assign(:recipe, user.recipes.new)
     render
   end
 
